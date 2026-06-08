@@ -52,7 +52,7 @@ porcentaje_docentes = st.sidebar.slider(
 )
 
 # Cargamos el archivo con los datos
-datos = pd.read_csv('ODS4India.csv', encoding='latin-1')
+datos = pd.read_csv('ODS4India (1).csv', encoding='latin-1')
 
 # Seleccionamos las variables
 X = pd.DataFrame(datos, columns=['Inversion'])
