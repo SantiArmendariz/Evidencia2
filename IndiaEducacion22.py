@@ -1,4 +1,6 @@
 
+%%writefile IndiaEducacion2.py
+
 import numpy as np
 import streamlit as st
 import pandas as pd
@@ -77,26 +79,8 @@ presupuesto_becas = presupuesto * porcentaje_becas
 presupuesto_infra = presupuesto * porcentaje_infra
 presupuesto_docentes = presupuesto * porcentaje_docentes
 
-# Calculamos el total gastado
-total_gastado = presupuesto * (
-    porcentaje_becas + porcentaje_infra + porcentaje_docentes
-)
-
-# Mostramos resumen de asignación
-st.subheader("Distribución del presupuesto")
-
-st.write(f"Presupuesto total: ${presupuesto:,.0f}")
-st.write(f"Presupuesto asignado a becas: ${presupuesto_becas:,.0f}")
-st.write(f"Presupuesto asignado a infraestructura: ${presupuesto_infra:,.0f}")
-st.write(f"Presupuesto asignado a docentes: ${presupuesto_docentes:,.0f}")
-st.write(f"Total asignado: ${total_gastado:,.0f}")
-
-# Validar restricciones sin generar error de Streamlit
-suma_porcentajes = porcentaje_becas + porcentaje_infra + porcentaje_docentes
-
-if abs(suma_porcentajes - 1.0) > 0.001:
-    st.warning("La distribución del presupuesto no suma exactamente 100%. Puedes ajustar los porcentajes si deseas usar todo el presupuesto.")
-elif porcentaje_becas < 0.20:
+# Validar restricciones sin mostrar distribución del presupuesto
+if porcentaje_becas < 0.20:
     st.warning("El presupuesto de becas no cumple con el mínimo del 20%.")
 elif porcentaje_infra > 0.50:
     st.warning("El presupuesto de infraestructura excede el tope del 50%.")
